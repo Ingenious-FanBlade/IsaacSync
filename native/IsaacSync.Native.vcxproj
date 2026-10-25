@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion><Keyword>Win32Proj</Keyword><ProjectGuid>{7C59153C-427D-438C-B180-073233E7426D}</ProjectGuid><RootNamespace>IsaacSyncNative</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries><PlatformToolset>v143</PlatformToolset><CharacterSet>Unicode</CharacterSet></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v143</PlatformToolset><WholeProgramOptimization>true</WholeProgramOptimization><CharacterSet>Unicode</CharacterSet></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(IsaacSyncOutputRoot)$(Configuration)\</OutDir><IntDir>$(IsaacSyncOutputRoot)obj\$(ProjectName)\$(Configuration)\</IntDir><TargetName>IsaacSync.Native</TargetName></PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile><WarningLevel>Level4</WarningLevel><TreatWarningAsError>true</TreatWarningAsError><SDLCheck>true</SDLCheck><ConformanceMode>true</ConformanceMode><LanguageStandard>stdcpp17</LanguageStandard><RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary><PreprocessorDefinitions>ISAAC_SYNC_PRODUCT_VERSION=&quot;$(IsaacSyncVersion)&quot;;WIN32_LEAN_AND_MEAN;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions><AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories><AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions></ClCompile>
+    <Link><SubSystem>Windows</SubSystem><ModuleDefinitionFile>$(ProjectDir)IsaacSync.Native.def</ModuleDefinitionFile><AdditionalDependencies>bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies><ImportLibrary>$(IntDir)IsaacSync.Native.lib</ImportLibrary><ProgramDatabaseFile>$(IntDir)IsaacSync.Native.pdb</ProgramDatabaseFile></Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile><WarningLevel>Level4</WarningLevel><TreatWarningAsError>true</TreatWarningAsError><SDLCheck>true</SDLCheck><ConformanceMode>true</ConformanceMode><LanguageStandard>stdcpp17</LanguageStandard><RuntimeLibrary>MultiThreaded</RuntimeLibrary><Optimization>MaxSpeed</Optimization><FunctionLevelLinking>true</FunctionLevelLinking><IntrinsicFunctions>true</IntrinsicFunctions><PreprocessorDefinitions>ISAAC_SYNC_PRODUCT_VERSION=&quot;$(IsaacSyncVersion)&quot;;WIN32_LEAN_AND_MEAN;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions><AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories><AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions></ClCompile>
+    <Link><SubSystem>Windows</SubSystem><EnableCOMDATFolding>true</EnableCOMDATFolding><OptimizeReferences>true</OptimizeReferences><ModuleDefinitionFile>$(ProjectDir)IsaacSync.Native.def</ModuleDefinitionFile><AdditionalDependencies>bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies><ImportLibrary>$(IntDir)IsaacSync.Native.lib</ImportLibrary><ProgramDatabaseFile>$(IntDir)IsaacSync.Native.pdb</ProgramDatabaseFile></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\isaac_sync\frame_store.hpp" />
+    <ClInclude Include="include\isaac_sync\dispatcher.hpp" />
+    <ClInclude Include="include\isaac_sync\hook_publication.hpp" />
+    <ClInclude Include="include\isaac_sync\ipc.hpp" />
+    <ClInclude Include="include\isaac_sync\protocol.hpp" />
+    <ClInclude Include="include\isaac_sync\runtime_ipc.hpp" />
+    <ClInclude Include="include\isaac_sync\runtime_lua.hpp" />
+    <ClInclude Include="include\isaac_sync\runtime_hooks.hpp" />
+    <ClInclude Include="include\isaac_sync\runtime_target.hpp" />
+    <ClInclude Include="include\isaac_sync\runtime_steam.hpp" />
+    <ClInclude Include="include\isaac_sync\runtime_roster.hpp" />
+    <ClInclude Include="include\isaac_sync\session.hpp" />
+    <ClInclude Include="include\isaac_sync\steam_transport.hpp" />
+    <ClInclude Include="include\isaac_sync\version.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\frame_store.cpp" />
+    <ClCompile Include="src\dispatcher.cpp" />
+    <ClCompile Include="src\protocol.cpp" />
+    <ClCompile Include="src\runtime.cpp" />
+    <ClCompile Include="src\runtime_ipc.cpp" />
+    <ClCompile Include="src\runtime_lua.cpp" />
+    <ClCompile Include="src\runtime_hooks.cpp" />
+    <ClCompile Include="src\runtime_target.cpp" />
+    <ClCompile Include="src\runtime_steam.cpp" />
+    <ClCompile Include="src\runtime_roster.cpp" />
+    <ClCompile Include="src\session.cpp" />
+    <ClCompile Include="src\steam_transport.cpp" />
+  </ItemGroup>
+  <ItemGroup><None Include="IsaacSync.Native.def" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

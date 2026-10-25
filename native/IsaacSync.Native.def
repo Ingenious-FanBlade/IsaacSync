@@ -1,0 +1,3 @@
+LIBRARY "IsaacSync.Native.dll"
+EXPORTS
+    IsaacSyncShutdown=_IsaacSyncShutdown@4
